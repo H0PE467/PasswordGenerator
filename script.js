@@ -6,6 +6,10 @@ var addUpperCase = false;
 var addNumeric = false;
 var addSpecialChar = false;
 
+lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+numbers = ["1","2","3","4","5","6","7","8","9","0"]
+specialChar = ["?","%","="]
 
 // Write password to the #password input
 function writePassword() {
@@ -14,6 +18,10 @@ function writePassword() {
 
   passwordText.value = password;
 
+}
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function generatePassword() {
@@ -33,7 +41,6 @@ function generatePassword() {
   addUpperCase = window.confirm("Add uppercases in your password?")
   addNumeric = window.confirm("Add numeric values in your password?")
   addSpecialChar = window.confirm("Add special characters in your password?")
-
 
   var selectedCharacters = 0;
   var tempPassw = "";
@@ -143,7 +150,6 @@ function generatePassword() {
 
   return tempPassw;
 
-  
 }
 
 // Add event listener to generate button
