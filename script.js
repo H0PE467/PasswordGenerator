@@ -6,6 +6,8 @@ var addUpperCase = false;
 var addNumeric = false;
 var addSpecialChar = false;
 
+
+// Pool of letters to take of
 lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 numbers = ["1","2","3","4","5","6","7","8","9","0"]
@@ -37,6 +39,7 @@ function generatePassword() {
     return "Error, Number exceeds limits";   
   }
 
+  //Prompts
   addLowerCase = window.confirm("Add lowecases in your password?")
   addUpperCase = window.confirm("Add uppercases in your password?")
   addNumeric = window.confirm("Add numeric values in your password?")
@@ -44,6 +47,8 @@ function generatePassword() {
 
   var selectedCharacters = 0;
   var tempPassw = "";
+
+  //Check that at least one pool of characters is selected
 
   if (addLowerCase==false && addUpperCase==false && addNumeric==false && addSpecialChar==false) {
     return "Error, select at least one parameter";
@@ -56,7 +61,8 @@ function generatePassword() {
     if (addLowerCase == true) {
 
       if (getRandomInt(0,2)==1 ) {
-        tempPassw = tempPassw + lowerCase[getRandomInt(0,26)];
+         //Add at the end
+        tempPassw = tempPassw + lowerCase[getRandomInt(0,lowerCase.length)];
 
         selectedCharacters = selectedCharacters + 1;
         
@@ -64,8 +70,10 @@ function generatePassword() {
           break
         }
       }
+
       else{
-        tempPassw = lowerCase[getRandomInt(0,26)] + tempPassw;
+        //Add at the begging
+        tempPassw = lowerCase[getRandomInt(0,lowerCase.length)] + tempPassw;
 
         selectedCharacters = selectedCharacters + 1;
         
@@ -80,7 +88,9 @@ function generatePassword() {
     if (addUpperCase == true) {
 
       if (getRandomInt(0,2)==1 ) {
-        tempPassw = tempPassw + upperCase[getRandomInt(0,26)];
+
+         //Add at the end
+        tempPassw = tempPassw + upperCase[getRandomInt(0,upperCase.length)];
 
         selectedCharacters = selectedCharacters + 1;
         
@@ -89,7 +99,8 @@ function generatePassword() {
         }
       }
       else{
-        tempPassw = upperCase[getRandomInt(0,26)] + tempPassw;
+        //Add at the begging
+        tempPassw = upperCase[getRandomInt(0,upperCase.length)] + tempPassw;
 
         selectedCharacters = selectedCharacters + 1;
         
@@ -104,7 +115,8 @@ function generatePassword() {
     if (addNumeric == true) {
 
       if (getRandomInt(0,2)==1 ) {
-        tempPassw = tempPassw + numbers[getRandomInt(0,10)];
+        //Add at the end
+        tempPassw = tempPassw + numbers[getRandomInt(0,numbers.length)];
 
         selectedCharacters = selectedCharacters + 1;
         
@@ -113,7 +125,8 @@ function generatePassword() {
         }
       }
       else{
-        tempPassw = numbers[getRandomInt(0,10)] + tempPassw;
+        //Add at the begging
+        tempPassw = numbers[getRandomInt(0,numbers.length)] + tempPassw;
 
         selectedCharacters = selectedCharacters + 1;
         
@@ -128,7 +141,8 @@ function generatePassword() {
     if (addSpecialChar == true) {
 
       if (getRandomInt(0,2)==1 ) {
-        tempPassw = tempPassw + specialChar[getRandomInt(0,3)];
+        //Add at the end
+        tempPassw = tempPassw + specialChar[getRandomInt(0,specialChar.length)];
 
         selectedCharacters = selectedCharacters + 1;
         
@@ -137,7 +151,8 @@ function generatePassword() {
         }
       }
       else{
-        tempPassw = specialChar[getRandomInt(0,3)] + tempPassw;
+        //Add at the begging
+        tempPassw = specialChar[getRandomInt(0,specialChar.length)] + tempPassw;
 
         selectedCharacters = selectedCharacters + 1;
         
@@ -155,23 +170,5 @@ function generatePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-/*
-Pide Especificaciones
-  Lenght
-  lowerCase
-  UpperCase
-  Numeric
-  Especial charactres
-
-Selecciona un caracter dentro de las especificaciones
-
-Lo añade al frente o al final de la contraseña
-
-Si se llego al numero de veces prometido se rompe, si no ssigue con el siguiente grupo o se repite
-
-Se muestra en la pagina
 
 
-
-
-*/
